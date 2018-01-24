@@ -1,0 +1,9 @@
+cf push Blue -n demo-time
+cf push Green -n demo-time-temp
+cf map-route Green example.com -n demo-time
+cf unmap-route Blue example.com -n demo-time
+Cloud Foundry community members have written plugins to automate the blue-green deployment process. These include:
+
+Autopilot: Autopilot is a Cloud Foundry Go plugin that provides a subcommand, zero-downtime-push, for hands-off, zero-downtime application deploys.
+BlueGreenDeploy: cf-blue-green-deploy is a plugin, written in Go, for the Cloud Foundry Command Line Interface (cf CLI) that automates a few steps involved in zero-downt
+ 
