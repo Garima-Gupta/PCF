@@ -1,0 +1,8 @@
+VM within Vm is warden.
+Source code+Build pack=droplet
+
+When a new application or a new version of an application is pushed to Cloud Foundry, the Cloud Controller selects a DEA (Droplet Execution Agent) from the pool of available DEAs to stage the application. The DEA uses the appropriate buildpack to stage the application. The result of this process is a droplet, that is an archive within Cloud Foundry that contains the application ready to run on a DEA. Once the droplet is ready, it will need hosting in a suitable environment. In Cloud Foundry, this is called a Warden container. Warden provides a service for managing a collection of containers and defines a protocol for clients to send requests to and receive responses from the server. Each DEA host in a Cloud Foundry deployment runs the Warden service, which manages cgroups, namespaces, process life cycle, and provides telemetry about the state of the host and each container.
+
+Here you can find a sequence diagram representing the application staging process.
+
+So basically an application instance consists of a droplet and a Warden container. A DEA will continually broadcast the application instance health status to the health manager, which communicates internally to the Cloud Controller. Requests are directed to the DEA through the Cloud Controller.
